@@ -19,6 +19,7 @@ const BuyingModal = ({collectionComputer , setCollectionComputer}) => {
             location 
         }
         console.log(buyingComputer);
+        setCollectionComputer(null);
     }
 
     return (
