@@ -1,11 +1,12 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import { useLoaderData } from 'react-router-dom';
-import BuyingModal from '../../BuyingModal/BuyingModal';
+import BuyingModal from '../BuyingModal/BuyingModal';
+
 import Computers from './Computers/Computers';
 
 const ComputerCollections = () => {
+  const [collectionComputer, setCollectionComputer] = useState(null);
 const {Collections} = useLoaderData();
-console.log(Collections);
 
 
     return (
@@ -13,12 +14,18 @@ console.log(Collections);
          <div className='grid mt-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 bg-lime-50 mt-10 mb-10'>
          {
           Collections.map(Collection => <Computers
-          key={Collections._id}
+          key={Collection._id}
           Collection={Collection}
+          setCollectionComputer={setCollectionComputer}
           ></Computers>)
          }
         </div>
-        <BuyingModal></BuyingModal>
+       { 
+       collectionComputer &&
+       <BuyingModal
+        collectionComputer={collectionComputer}
+        setCollectionComputer={setCollectionComputer}
+        ></BuyingModal>}
        </div>
     );
 };

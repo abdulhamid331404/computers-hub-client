@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Computers = ({ Collection }) => {
+const Computers = ({ Collection, setCollectionComputer }) => {
     const { name, img, location, orginalPrice, resellPrice, uses, post } = Collection;
     console.log(Collection);
 
@@ -14,9 +14,13 @@ const Computers = ({ Collection }) => {
                 <p>Resell Price: {resellPrice} $</p>
                 <p>Uses: {uses}</p>
                 <p>Location: {location}</p>
-                
+
                 <div className="card-actions justify-end">
-                    <label htmlFor="buying-modal" className="btn btn-primary">Buy Now</label>
+                    <label
+                        htmlFor="buying-modal"
+                        className="btn btn-primary"
+                        onClick={() => setCollectionComputer(Collection)}
+                    >Buy Now</label>
                 </div>
             </div>
         </div>
