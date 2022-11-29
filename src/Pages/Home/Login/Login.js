@@ -17,7 +17,15 @@ const Login = () => {
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
 
-   
+    <label className="label cursor-pointer">
+    <span className="label-text">Seller</span> 
+    <input type="radio" name="radio-10" className="radio checked:bg-blue-500" checked />
+  </label> 
+
+  <label className="label cursor-pointer">
+    <span className="label-text">Buyer</span> 
+    <input type="radio" name="radio-10" className="radio checked:bg-blue-500" checked />
+  </label>
 
                         <label className="label"> <span className="label-text">Email</span></label>
                         <input type="text"
