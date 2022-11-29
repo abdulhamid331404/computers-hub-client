@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     return (
-        <div className='h-[500px] flex justify-center items-center shadow-2xl bg-base-100'>
+        <div className='h-[700px] flex justify-center items-center shadow-2xl'>
             <div className='w-96 p-7 bg-base-100 card bg-orange-100'>
                 <h2 className='text-xl text-center'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
