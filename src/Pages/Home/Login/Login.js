@@ -8,14 +8,19 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
     const {logInUser} = useContext(AuthContext);
+
     const handleLogin = data =>{
+        setLoginError('')
         console.log(data);
         logInUser(data.email, data.password)
         .then(result=>{
             const user = result.user;
             console.log(user);
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error.message)
+            setLoginError(error.message);
+        });
     }
 
     return (
