@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 
 const SignUp = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const [signUpError, setSignUPError] = useState('');
-
+const handleSignUp = data =>{
+    console.log(data);
+}
 
     return (
-        <div className='h-[500px] border flex justify-center items-center'>
-        <div className='w-96 p-7'>
+        <div className='h-[500px] border flex justify-center items-center '>
+        <div className='w-96 p-7 bg-base-100 card bg-orange-100'>
             <h2 className='text-xl text-center'>Sign Up</h2>
-            <form onSubmit={handleSubmit('handleSignUp')}>
+            <form onSubmit={handleSubmit(handleSignUp)}>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Name</span></label>
                     <input type="text" {...register("name", {
@@ -40,9 +42,6 @@ const SignUp = () => {
                 {signUpError && <p className='text-red-600'>{signUpError}</p>}
             </form>
             <p>Already have an account? <Link className='text-secondary' to="/login">Please Login</Link></p>
-            <div className="divider">OR</div>
-            <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
-
         </div>
     </div>
     );
