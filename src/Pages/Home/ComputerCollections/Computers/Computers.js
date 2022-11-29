@@ -16,7 +16,7 @@ const Computers = ({ Collection }) => {
                 <p>Location: {location}</p>
                 
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <label htmlFor="buying-modal" className="btn btn-primary">Buy Now</label>
                 </div>
             </div>
         </div>
