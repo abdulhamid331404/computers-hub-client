@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BuyingModal = ({ collectionComputer, setCollectionComputer }) => {
-    const {name, resellPrice } = collectionComputer;
+    const { name, resellPrice } = collectionComputer;
     const { user } = useContext(AuthContext);
 
     const handleBuying = (event, resellPrice) => {
@@ -23,7 +23,7 @@ const BuyingModal = ({ collectionComputer, setCollectionComputer }) => {
             location,
             resellPrice,
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://final-project-server-abdulhamid331404.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

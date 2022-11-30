@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllUsers from "../../Deshboard/AllUsers/AllUsers";
 import Deshboard from "../../Deshboard/Deshboard/Deshboard";
 import MyOrders from "../../Deshboard/MyOrders/MyOrders";
 import DashboardLayout from "../../Layout/DashboardLayout";
@@ -7,6 +8,7 @@ import ComputerCollections from "../../Pages/Home/ComputerCollections/ComputerCo
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Home/Login/Login";
 import SignUp from "../../Pages/Home/SignUP/SignUp";
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 loader: async () => {
-                    return fetch('http://localhost:5000/allComputers')
+                    return fetch('https://final-project-server-abdulhamid331404.vercel.app/allComputers')
                 },
                 element: <Home></Home>
             },
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
                 path: '/computers/:id',
                 element: <PrivateRoute><ComputerCollections></ComputerCollections></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/computers/${params.id}`)
+                    return fetch(`https://final-project-server-abdulhamid331404.vercel.app/computers/${params.id}`)
                 }
             },
             {
@@ -41,12 +43,20 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-        children:[
+        children: [
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <AllUsers></AllUsers>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <PageNotFound></PageNotFound>
     }
 ])
 
