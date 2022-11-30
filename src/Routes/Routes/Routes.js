@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Deshboard from "../../Deshboard/Deshboard/Deshboard";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import ComputerCollections from "../../Pages/Home/ComputerCollections/ComputerCollections";
 import Home from "../../Pages/Home/Home/Home";
@@ -15,14 +16,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 loader: async () => {
-                    return fetch('http://localhost:5000/allComputers ')
+                    return fetch('http://localhost:5000/allComputers')
                 },
                 element: <Home></Home>
             },
             {
                 path: '/computers/:id',
                 element: <PrivateRoute><ComputerCollections></ComputerCollections></PrivateRoute>,
-                loader:({params}) => {
+                loader: ({ params }) => {
                     return fetch(`http://localhost:5000/computers/${params.id}`)
                 }
             },
@@ -38,7 +39,13 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Deshboard></Deshboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children:[
+            {
+                path: '/dashboard',
+                element: <Deshboard></Deshboard>
+            }
+        ]
     }
 ])
 

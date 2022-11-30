@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 
 const Computers = ({ Collection, setCollectionComputer }) => {
     const { name, img, location, orginalPrice, resellPrice, uses, post } = Collection;
-    console.log(Collection);
 
     return (
         <div className="card w-96 bg-base-100 shadow-xl mt-5">
-            <figure><img src={img} alt="Shoes" className='w-full' /></figure>
+            <figure><img src={img} alt="Shoes" className='w-full h-96' /></figure>
             <div className="card-body text-left">
                 <h2 className="card-title"> {name} </h2>
                 <p>Post: {post}</p>
