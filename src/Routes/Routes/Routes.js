@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Deshboard from "../../Deshboard/Deshboard/Deshboard";
+import MyOrders from "../../Deshboard/MyOrders/MyOrders";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import ComputerCollections from "../../Pages/Home/ComputerCollections/ComputerCollections";
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/dashboard',
-                element: <Deshboard></Deshboard>
+                element: <MyOrders></MyOrders>
             }
         ]
     }

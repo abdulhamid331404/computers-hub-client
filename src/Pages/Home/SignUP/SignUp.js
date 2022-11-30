@@ -17,13 +17,14 @@ const handleSignUp = data =>{
     .then(result =>{
         const user = result.user;
         console.log(user);
-        toast('User Created Successfully')
+        toast.success('User Created Successfully')
         const userInfo = {
-            displayName: data.name
+            displayName: data.name,
+            userType: data.bayerAndSeller
         }
         updateUser(userInfo)
         .then(() =>{
-            navigate('/')
+            saveUser(data.name, data.email);
         })
         .catch(error => console.error(error));
     })
@@ -31,6 +32,23 @@ const handleSignUp = data =>{
         console.error(error.message)
         setSignUPError(error.message)
     });
+}
+
+const saveUser = (name, email) =>{
+    const user = {name, email};
+
+    fetch('http://localhost:5000/users',{
+        method: 'POST',
+        headers:{
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log('save user',data);
+        navigate('/')
+    })
 }
 
     return (
@@ -47,7 +65,10 @@ const handleSignUp = data =>{
                 </div>
               <div className="form-control w-full max-w-xs">
               <label className="label"> <span className="label-text">Select Buyer or Seller</span></label>
-              <select className="select select-bordered w-full ">
+              <select
+              {...register("bayerAndSeller")}
+
+              className="select select-bordered w-full ">
   <option>Buyer</option>
   <option>Seller</option>
 </select>

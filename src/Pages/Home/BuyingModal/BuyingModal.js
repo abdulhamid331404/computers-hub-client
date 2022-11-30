@@ -3,10 +3,10 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BuyingModal = ({ collectionComputer, setCollectionComputer }) => {
-    const { name, resellPrice } = collectionComputer;
+    const {name, resellPrice } = collectionComputer;
     const { user } = useContext(AuthContext);
 
-    const handleBuying = event => {
+    const handleBuying = (event, resellPrice) => {
         event.preventDefault();
         const form = event.target;
         const itemName = form.itemName.value;
@@ -20,7 +20,8 @@ const BuyingModal = ({ collectionComputer, setCollectionComputer }) => {
             user: userName,
             email,
             phone,
-            location
+            location,
+            resellPrice,
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',

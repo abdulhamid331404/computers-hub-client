@@ -23,6 +23,7 @@ const {Collections} = useLoaderData();
        { 
        collectionComputer &&
        <BuyingModal
+       key={collectionComputer._id}
         collectionComputer={collectionComputer}
         setCollectionComputer={setCollectionComputer}
         ></BuyingModal>}
