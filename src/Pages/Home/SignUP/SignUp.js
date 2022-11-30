@@ -32,7 +32,7 @@ const handleSignUp = data =>{
 }
 
     return (
-        <div className='h-[500px] border flex justify-center items-center '>
+        <div className='h-[600px] border flex justify-center items-center '>
         <div className='w-96 p-7 bg-base-100 card bg-orange-100'>
             <h2 className='text-xl text-center'>Sign Up</h2>
             <form onSubmit={handleSubmit(handleSignUp)}>
@@ -43,6 +43,13 @@ const handleSignUp = data =>{
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                 </div>
+              <div className="form-control w-full max-w-xs">
+              <label className="label"> <span className="label-text">Select Buyer or Seller</span></label>
+              <select className="select select-bordered w-full ">
+  <option>Buyer</option>
+  <option>Seller</option>
+</select>
+              </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Email</span></label>
                     <input type="email" {...register("email", {
