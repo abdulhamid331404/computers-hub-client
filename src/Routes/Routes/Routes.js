@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Deshboard from "../../Deshboard/Deshboard/Deshboard";
 import Main from "../../Layout/Main";
 import ComputerCollections from "../../Pages/Home/ComputerCollections/ComputerCollections";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Home/Login/Login";
 import SignUp from "../../Pages/Home/SignUP/SignUp";
+import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/computers/:id',
-                element: <ComputerCollections></ComputerCollections>,
+                element: <PrivateRoute><ComputerCollections></ComputerCollections></PrivateRoute>,
                 loader:({params}) => {
                     return fetch(`http://localhost:5000/computers/${params.id}`)
                 }
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Deshboard></Deshboard></PrivateRoute>
     }
 ])
 

@@ -20,7 +20,7 @@ const Computers = ({ Collection, setCollectionComputer }) => {
                         htmlFor="buying-modal"
                         className="btn btn-primary"
                         onClick={() => setCollectionComputer(Collection)}
-                    >Buy Now</label>
+                    >Book now</label>
                 </div>
             </div>
         </div>

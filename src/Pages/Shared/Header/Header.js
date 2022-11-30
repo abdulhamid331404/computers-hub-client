@@ -11,13 +11,12 @@ const Header = () => {
     }
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/appointment">All Users</Link></li>
-        <li><Link to="/about">Add Product</Link></li>
-
-        <li><Link to="/dashboard">Dashboard</Link></li>
-        <li><Link to="/dashboard">My Order</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
        { user?.uid ? 
+       <>
+        <li><Link to="/dashboard">Dashboard</Link></li>
        <li><button onClick={handleLogOut}>Sign Out</button></li>
+       </>
         :<li><Link to="/login">Login</Link></li>}
     </React.Fragment>
 

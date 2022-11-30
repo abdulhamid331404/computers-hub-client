@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const BuyingModal = ({collectionComputer , setCollectionComputer}) => {
     const {name, resellPrice} =collectionComputer;
@@ -20,6 +21,7 @@ const BuyingModal = ({collectionComputer , setCollectionComputer}) => {
         }
         console.log(buyingComputer);
         setCollectionComputer(null);
+        toast('Item is Booked')
     }
 
     return (
@@ -38,7 +40,7 @@ const BuyingModal = ({collectionComputer , setCollectionComputer}) => {
                         <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                         <input name="location" type="text" placeholder="Meeting Location" className="input w-full input-bordered" />
                         <br />
-                        <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                        <input className='btn btn-accent w-full' type="submit" value="BOOKED" />
                     </form>
                 </div>
             </div>
