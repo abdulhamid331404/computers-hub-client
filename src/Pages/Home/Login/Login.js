@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -8,9 +9,10 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
-    const {logInUser} = useContext(AuthContext);
+    const {logInUser, googleLogIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider();
 
     const from = location.state?.form?.pathname || '/';
 
@@ -30,22 +32,27 @@ const Login = () => {
         });
     }
 
+    const handleGoogleLogin = (data) =>{
+        // event.preventDefault();
+        googleLogIn(googleProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            toast('User Login Successfully');
+        })
+        .catch(error => {
+            console.error(error.message)
+        });
+    }
+
+
     return (
-        <div className='h-[700px] flex justify-center items-center shadow-2xl'>
+        <div className='h-[500px] flex justify-center items-center shadow-2xl'>
             <div className='w-96 p-7 bg-base-100 card bg-orange-100'>
                 <h2 className='text-xl text-center'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
 
-    <label className="label cursor-pointer">
-    <span className="label-text">Seller</span> 
-    <input type="radio" name="radio-10" className="radio checked:bg-blue-500" checked />
-  </label> 
-
-  <label className="label cursor-pointer">
-    <span className="label-text">Buyer</span> 
-    <input type="radio" name="radio-10" className="radio checked:bg-blue-500" checked />
-  </label>
 
                         <label className="label"> <span className="label-text">Email</span></label>
                         <input type="text"
@@ -73,7 +80,7 @@ const Login = () => {
                 </form>
                 <p>Don’t have a account?<Link className='text-secondary' to="/signup"> SignUp</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
