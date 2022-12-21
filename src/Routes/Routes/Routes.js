@@ -4,6 +4,7 @@ import Deshboard from "../../Deshboard/Deshboard/Deshboard";
 import MyOrders from "../../Deshboard/MyOrders/MyOrders";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
+import Blog from "../../Pages/Blog/Blog";
 import ComputerCollections from "../../Pages/Home/ComputerCollections/ComputerCollections";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Home/Login/Login";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     },
